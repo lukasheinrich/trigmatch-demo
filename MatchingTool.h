@@ -10,6 +10,7 @@
 
   
 struct MatchingTool : public IMatchingTool{
+  friend class MatchingImplementation;
   MatchingTool():m_impl(*this){}
   bool match(const IParticle& reco, const std::string& chain);
   bool match(const IParticle& reco, const std::string& chain, class_id_type clid,  const IMetric<IParticle,IParticle>* metric);
@@ -18,7 +19,6 @@ struct MatchingTool : public IMatchingTool{
 protected:
   bool matchFeatures(const std::vector<std::vector<double> >& distances);  
   std::vector<Combination> chainCombs(const std::string& chain);  
-  TrigDecisionTool* tdt();  
 
   MatchingImplementation* impl();
 

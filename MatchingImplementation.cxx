@@ -1,4 +1,5 @@
 #include "MatchingImplementation.h"
+#include "MatchingTool.h"
 
 
 bool MatchingImplementation::matchFeatures(const std::vector<std::vector<double> >& distances){
@@ -7,7 +8,11 @@ bool MatchingImplementation::matchFeatures(const std::vector<std::vector<double>
 }
 
 std::vector<Combination> MatchingImplementation::chainCombs(const std::string& chain){
-  auto fc = imt.tdt()->features(chain);
+  auto fc = tdt()->features(chain);
   auto combs = fc.combinations();
   return combs;
+}
+
+TrigDecisionTool* MatchingImplementation::tdt(){
+  return &mt.m_tdt;
 }

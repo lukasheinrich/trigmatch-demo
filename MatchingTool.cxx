@@ -22,10 +22,6 @@ bool MatchingTool::match(const std::vector<IParticle>& recos, const std::string&
   return matched;
 }
 
-TrigDecisionTool* MatchingTool::tdt(){
-  return &m_tdt;
-}
-
 MatchingImplementation* MatchingTool::impl(){
   return &m_impl;
 }

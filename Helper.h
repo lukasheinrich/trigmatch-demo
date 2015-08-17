@@ -1,6 +1,8 @@
 #ifndef HELPER_H
 #define HELPER_H
 
+#include <vector>
+
 typedef unsigned int class_id_type;
 
 template<typename R,typename T>

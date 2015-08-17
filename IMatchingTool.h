@@ -12,12 +12,8 @@ struct IParticle;
 struct MatchingImplementation;
 struct TrigDecisionTool;
 struct IMatchingTool{
-  friend class MatchingImplementation;
-  
   virtual bool match(const IParticle& reco, const std::string& chain, class_id_type clid, const IMetric<IParticle,IParticle>* metric = 0) = 0;
   virtual bool match(const std::vector<IParticle>& recos, const std::string& chain, class_id_type clid, const IMetric<IParticle,IParticle>* metric = 0) = 0;
-
-  virtual TrigDecisionTool* tdt() = 0;
 
   template<typename T, typename R>
   bool match(const R& reco, const std::string& chain, const IMetric<R,T>* metric);
@@ -26,7 +22,6 @@ struct IMatchingTool{
   bool match(const std::vector<R>& recos, const std::string& chain, const IMetric<R,T>* metric);
 
 protected:
-  
   virtual MatchingImplementation* impl() = 0;
 
 };
