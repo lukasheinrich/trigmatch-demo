@@ -6,12 +6,13 @@ struct IParticle;
 #include <string>
 #include <vector>
 #include "Feature.h"
-#include "Combination.h"
 #include "Helper.h"
+#include <memory>
 
-
+struct MatchingImplementation;
 struct TrigDecisionTool;
 struct IMatchingTool{
+  friend class MatchingImplementation;
   
   virtual bool match(const IParticle& reco, const std::string& chain, class_id_type clid, const IMetric<IParticle,IParticle>* metric = 0) = 0;
   virtual bool match(const std::vector<IParticle>& recos, const std::string& chain, class_id_type clid, const IMetric<IParticle,IParticle>* metric = 0) = 0;
@@ -25,9 +26,8 @@ struct IMatchingTool{
   bool match(const std::vector<R>& recos, const std::string& chain, const IMetric<R,T>* metric);
 
 protected:
-
-  virtual std::vector<Combination> chainCombs(const std::string& chain) = 0;
-  virtual bool matchFeatures(const std::vector<std::vector<double> >& distances) = 0;
+  
+  virtual MatchingImplementation* impl() = 0;
 
 };
 

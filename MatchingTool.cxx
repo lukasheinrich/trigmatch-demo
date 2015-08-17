@@ -15,24 +15,17 @@ bool MatchingTool::match(const std::vector<IParticle>& recos, const std::string&
     auto metric = IParticleHelper::getMetric(recos.at(0).type());
   }
   bool matched = false;
-  for(auto comb : chainCombs(chain)){
+  for(auto comb : impl()->chainCombs(chain)){
     std::vector<Feature<IParticle> > feats_ip =  comb.get(clid);
-    matched = matched || matchFeatures(Helper::distanceMatrix(recos,feats_ip,*metric));
+    matched = matched || impl()->matchFeatures(Helper::distanceMatrix(recos,feats_ip,*metric));
   }
   return matched;
 }
 
-bool MatchingTool::matchFeatures(const std::vector<std::vector<double> >& distances){
-  //do some complicated matching based on distance matrix
-  return true;
-}
-
-std::vector<Combination> MatchingTool::chainCombs(const std::string& chain){
-  auto fc = tdt()->features(chain);
-  auto combs = fc.combinations();
-  return combs;
-}
-
 TrigDecisionTool* MatchingTool::tdt(){
   return &m_tdt;
+}
+
+MatchingImplementation* MatchingTool::impl(){
+  return &m_impl;
 }

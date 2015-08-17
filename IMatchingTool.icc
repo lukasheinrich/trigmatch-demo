@@ -9,9 +9,9 @@ bool IMatchingTool::match(const R& reco, const std::string& chain, const IMetric
 template<typename T,typename R>
 bool IMatchingTool::match(const std::vector<R>& reco, const std::string& chain, const IMetric<R,T>* metric){
   bool matched = false;
-  for(auto comb : chainCombs(chain)){
+  for(auto comb : impl()->chainCombs(chain)){
     std::vector<Feature<T> > feats =  comb.get<T>();
-    matched = matched || matchFeatures(Helper::distanceMatrix(reco,feats,*metric));
+    matched = matched || impl()->matchFeatures(Helper::distanceMatrix(reco,feats,*metric));
   }
   return matched;
 }
