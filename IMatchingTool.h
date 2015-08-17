@@ -27,7 +27,7 @@ struct IMatchingTool{
 protected:
 
   virtual std::vector<Combination> chainCombs(const std::string& chain) = 0;
-  virtual bool matchFeatures(const std::vector<std::vector<unsigned int> >& distances) = 0;
+  virtual bool matchFeatures(const std::vector<std::vector<double> >& distances) = 0;
 
 };
 

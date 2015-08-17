@@ -14,7 +14,7 @@ struct MatchingTool : public IMatchingTool{
   bool match(const std::vector<IParticle>& recos, const std::string& chain, class_id_type clid, const IMetric<IParticle,IParticle>* metric);
 
 protected:
-  bool matchFeatures(const std::vector<std::vector<unsigned int> >& distances);  
+  bool matchFeatures(const std::vector<std::vector<double> >& distances);  
   std::vector<Combination> chainCombs(const std::string& chain);  
   TrigDecisionTool* tdt();  
 

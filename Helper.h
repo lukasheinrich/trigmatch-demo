@@ -11,10 +11,10 @@ struct IMetric {
 namespace Helper{
 
   template<typename R,typename T>
-  std::vector<std::vector<unsigned int> > distanceMatrix(const std::vector<R>& reco, const std::vector<Feature<T> >& feats, const IMetric<R,T>& m){
-  std::vector<std::vector<unsigned int> > matrix;
+  std::vector<std::vector<double> > distanceMatrix(const std::vector<R>& reco, const std::vector<Feature<T> >& feats, const IMetric<R,T>& m){
+  std::vector<std::vector<double> > matrix;
     for(auto r : reco){
-      std::vector<unsigned int> distance_to_r;
+      std::vector<double> distance_to_r;
       for(auto f : feats){
         distance_to_r.push_back(m.distance(r,*f.cptr()));
       }
@@ -22,7 +22,5 @@ namespace Helper{
     }
     return matrix;
   }
-
 }
-
 #endif

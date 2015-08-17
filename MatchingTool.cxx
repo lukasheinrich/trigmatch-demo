@@ -22,7 +22,7 @@ bool MatchingTool::match(const std::vector<IParticle>& recos, const std::string&
   return matched;
 }
 
-bool MatchingTool::matchFeatures(const std::vector<std::vector<unsigned int> >& distances){
+bool MatchingTool::matchFeatures(const std::vector<std::vector<double> >& distances){
   //do some complicated matching based on distance matrix
   return true;
 }
