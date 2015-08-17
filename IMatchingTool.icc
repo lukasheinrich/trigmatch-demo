@@ -1,0 +1,19 @@
+#ifndef IMATCHINGTOOL_ICC
+#define IMATCHINGTOOL_ICC
+
+template<typename T, typename R >
+bool IMatchingTool::match(const R& reco, const std::string& chain, const IMetric<R,T>* metric){
+  return match({reco},chain,metric);
+}
+
+template<typename T,typename R>
+bool IMatchingTool::match(const std::vector<R>& reco, const std::string& chain, const IMetric<R,T>* metric){
+  bool matched = false;
+  for(auto comb : chainCombs(chain)){
+    std::vector<Feature<T> > feats =  comb.get<T>();
+    matched = matched || matchFeatures(Helper::distanceMatrix(reco,feats,*metric));
+  }
+  return matched;
+}
+
+#endif
