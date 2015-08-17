@@ -1,16 +1,15 @@
 #ifndef IMATCHINGTOOL_H
 #define IMATCHINGTOOL_H
 
-struct IParticle;
-
 #include <string>
 #include <vector>
-#include "Feature.h"
-#include "Helper.h"
-#include <memory>
 
+struct IParticle;
+template<typename R,typename T> struct IMetric;
 struct MatchingImplementation;
 struct TrigDecisionTool;
+typedef unsigned int class_id_type;
+
 struct IMatchingTool{
   virtual bool match(const IParticle& reco, const std::string& chain, class_id_type clid, const IMetric<IParticle,IParticle>* metric = 0) = 0;
   virtual bool match(const std::vector<IParticle>& recos, const std::string& chain, class_id_type clid, const IMetric<IParticle,IParticle>* metric = 0) = 0;

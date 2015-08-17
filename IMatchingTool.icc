@@ -1,6 +1,9 @@
 #ifndef IMATCHINGTOOL_ICC
 #define IMATCHINGTOOL_ICC
 
+#include "Feature.h"
+#include "Helper.h"
+
 template<typename T, typename R >
 bool IMatchingTool::match(const R& reco, const std::string& chain, const IMetric<R,T>* metric){
   return match({reco},chain,metric);

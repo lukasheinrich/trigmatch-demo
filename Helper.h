@@ -1,6 +1,7 @@
 #ifndef HELPER_H
 #define HELPER_H
 
+#include "Feature.h"
 #include <vector>
 
 typedef unsigned int class_id_type;
