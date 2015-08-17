@@ -1,13 +1,9 @@
 #include "MatchingTool.h"
 
-bool MatchingTool::match(const IParticle& reco, const std::string& chain){
+bool MatchingTool::match(const IParticle& reco, const std::string& chain, class_id_type clid,  const IMetric<IParticle,IParticle>* metric){
   std::vector<IParticle> v;
   v.push_back(reco);
-  return match(reco,chain);
-}
-
-bool MatchingTool::match(const IParticle& reco, const std::string& chain, class_id_type clid,  const IMetric<IParticle,IParticle>* metric){
-  return match({reco},chain);
+  return match(v,chain,clid,metric);
 }
 
 bool MatchingTool::match(const std::vector<IParticle>& recos, const std::string& chain, class_id_type clid,  const IMetric<IParticle,IParticle>* metric){

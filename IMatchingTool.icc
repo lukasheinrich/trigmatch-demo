@@ -6,7 +6,9 @@
 
 template<typename T, typename R >
 bool IMatchingTool::match(const R& reco, const std::string& chain, const IMetric<R,T>* metric){
-  return match({reco},chain,metric);
+  std::vector<R> v;
+  v.push_back(reco);
+  return match(v,chain,metric);
 }
 
 template<typename T,typename R>

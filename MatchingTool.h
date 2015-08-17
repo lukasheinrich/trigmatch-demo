@@ -12,8 +12,7 @@
 struct MatchingTool : public IMatchingTool{
   friend class MatchingImplementation;
   MatchingTool():m_impl(*this){}
-  bool match(const IParticle& reco, const std::string& chain);
-  bool match(const IParticle& reco, const std::string& chain, class_id_type clid,  const IMetric<IParticle,IParticle>* metric);
+  bool match(const IParticle& reco, const std::string& chain, class_id_type clid,  const IMetric<IParticle,IParticle>* metric = 0);
   bool match(const std::vector<IParticle>& recos, const std::string& chain, class_id_type clid, const IMetric<IParticle,IParticle>* metric);
 
 protected:
